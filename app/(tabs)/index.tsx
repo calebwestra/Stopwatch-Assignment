@@ -55,11 +55,14 @@ export default function StopWatch() {
     return () => clearInterval(id);
   }, [run]);
 
+  let circleBackgroundColor = run ? 'lawngreen' : 'yellow';
+
   // JSX rendered to Webpage
   return (
     <View style={styles.page}>
       <View style={styles.timerContainer}>
-        <View style={styles.textContainer}>
+        {/* <View style={styles.textContainer}> */}
+        <View style={[styles.textContainer, { backgroundColor: circleBackgroundColor }]}>
           <Text style={styles.title}>{String(mins).padStart(2, '0') + ':' +  // formatting = MI:SE.MS
                         String(Math.floor(milisecs/100)).padStart(2, '0') + '.' +
                         String((milisecs % 100)).padStart(2, '0')}
